@@ -13,3 +13,6 @@ class Lexema(Expression):
 
     def getColumna(self):
         return super().getColumna()
+    
+    def __str__(self):
+        return f"Lexema({self.lexema}, Fila: {self.fila}, Columna: {self.columna})"

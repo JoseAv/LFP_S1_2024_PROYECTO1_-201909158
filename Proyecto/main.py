@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.scrolledtext import ScrolledText
+from analizador import instruccion_inicio
 
 class TextEditorApp:
     def __init__(self, root):
@@ -77,8 +78,11 @@ class TextEditorApp:
         self.second_text_widget.tag_configure("green", foreground="green")
         self.second_text_widget.tag_add("green", "1.0", "end")
         self.second_text_widget.config(state='disabled')
+        instruccion_inicio(text)
+        
 
 if __name__ == "__main__":
     root = tk.Tk()
     app = TextEditorApp(root)
+    
     root.mainloop()
