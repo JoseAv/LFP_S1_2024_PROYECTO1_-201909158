@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.scrolledtext import ScrolledText
-from analizador import instruccion_inicio
+from analizador import instruccion_inicio,lista_lexemas  
 
 class TextEditorApp:
     def __init__(self, root):
@@ -46,7 +46,7 @@ class TextEditorApp:
     def open_file(self):
         file_path = filedialog.askopenfilename(filetypes=[("Archivos de Texto", "*.lfp")])
         if file_path:
-            with open(file_path, 'r') as file:
+            with open(file_path, 'r',-1,'utf8') as file:
                 content = file.read()
                 self.text_widget.delete(1.0, tk.END)
                 self.text_widget.insert(tk.END, content)
@@ -79,6 +79,12 @@ class TextEditorApp:
         self.second_text_widget.tag_add("green", "1.0", "end")
         self.second_text_widget.config(state='disabled')
         instruccion_inicio(text)
+
+        for lexema in lista_lexemas:
+            print(lexema)
+
+        
+
         
 
 if __name__ == "__main__":

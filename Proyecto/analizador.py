@@ -13,9 +13,7 @@ def instruccion_inicio(cadena):
     global n_columna
     global lista_lexemas
 
-    print(lista_lexemas)
-
-    print(cadena)
+    n_columna=0
     lexema = ''
     puntero = 0
 
@@ -35,12 +33,45 @@ def instruccion_inicio(cadena):
                 lista_lexemas.append(l)  #! Agregamos los lexemas a la lista_lexema
                 n_columna += len(lexema) + 1
                 puntero = 0
+        elif char.isupper():
+            lexema, cadena = armar_lexema(cadena)
+            if lexema and cadena:
+                n_columna +=1
+                # Aramar como clase
+                l = Lexema(lexema, n_linea, n_columna)
+                lista_lexemas.append(l)
+                n_columna += len(lexema) + 1
+                puntero = 0
+        elif char.islower():
+            lexema, cadena = armar_lexema(cadena)
+            if lexema and cadena:
+                n_columna +=1
+                # Aramar como clase
+                l = Lexema(lexema, n_linea, n_columna)
+                lista_lexemas.append(l)
+                n_columna += len(lexema) + 1
+                puntero = 0
+        elif char == '\t':
+            n_columna +=4
+            cadena = cadena[4:]
+            puntero=0
+        elif char == "\n":
+            cadena = cadena[1:]
+            puntero = 0
+            n_linea +=1
+            n_columna = 1
+        elif char == ' ' or char == '\r' or char == '{' or char == '}' or char == ',' or char == '.' or char == ':' or char == ';':
+            n_columna +=1
+            cadena = cadena[1:]
+            puntero = 0
         else:
-            n_columna += 1  # Incrementar n_columna en otros casos
+            cadena = cadena[1:]
+            puntero = 0
+            n_columna +=1
 
 
 
-
+            
 
 
 def armar_lexema(cadena):
@@ -52,7 +83,7 @@ def armar_lexema(cadena):
     print(lista_lexemas)
     for char in cadena:
         puntero += char
-        if char == ':' or char == '\"' or char == ' ':
+        if char == ':' or char == '\"' or char == '':
             return lexema, cadena[len(puntero):]    #! si encuentra una  : o " termino de leer el token
         else:
             lexema += char   #! creamos nuestros Token
