@@ -2,6 +2,8 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.scrolledtext import ScrolledText
 from analizador import instruccion_inicio,lista_lexemas  
+from separador import Separador
+
 
 class TextEditorApp:
     def __init__(self, root):
@@ -78,10 +80,12 @@ class TextEditorApp:
         self.second_text_widget.tag_configure("green", foreground="green")
         self.second_text_widget.tag_add("green", "1.0", "end")
         self.second_text_widget.config(state='disabled')
-        instruccion_inicio(text)
 
-        for lexema in lista_lexemas:
-            print(lexema)
+        instruccion_inicio(text)
+        Separador()
+        
+
+        
 
         
 

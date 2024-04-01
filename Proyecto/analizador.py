@@ -46,7 +46,7 @@ def instruccion_inicio(cadena):
             lexema, cadena = armar_lexema(cadena)
             if lexema and cadena:
                 n_columna +=1
-                # Aramar como clase
+                # armar como clase
                 l = Lexema(lexema, n_linea, n_columna)
                 lista_lexemas.append(l)
                 n_columna += len(lexema) + 1
