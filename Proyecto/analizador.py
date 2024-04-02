@@ -8,7 +8,6 @@ lista_errores = []
 
 
 def instruccion_inicio(cadena):
-    print(cadena)
     global n_linea
     global n_columna
     global lista_lexemas
@@ -23,7 +22,6 @@ def instruccion_inicio(cadena):
     while puntero < len(cadena):  # Verificar si puntero está dentro del rango de la cadena
         char = cadena[puntero]
         puntero += 1
-        print(lista_lexemas)
         if char == '\"':       #! leemos nuestra cadena y al encontrar un "" que habre empieza a crear el token
             lexema, cadena = armar_lexema(cadena[puntero:])
             if lexema and cadena:
@@ -60,11 +58,12 @@ def instruccion_inicio(cadena):
             puntero = 0
             n_linea +=1
             n_columna = 1
-        elif char == ' ' or char == '\r' or char == '{' or char == '}' or char == ',' or char == '.' or char == ':' or char == ';':
+        elif char == ' ' or char == '\r' or char == '{' or char == '}' or char == ',' or char == '.' or char == ':' or char == ';' or char == '=':
             n_columna +=1
             cadena = cadena[1:]
             puntero = 0
         else:
+            lista_errores.append(cadena)
             cadena = cadena[1:]
             puntero = 0
             n_columna +=1
@@ -80,10 +79,9 @@ def armar_lexema(cadena):
     global lista_lexemas
     lexema = ''
     puntero = ''
-    print(lista_lexemas)
     for char in cadena:
         puntero += char
-        if char == ':' or char == '\"' or char == '':
+        if char == ':' or char == '\"' or char == '' or char == '=':
             return lexema, cadena[len(puntero):]    #! si encuentra una  : o " termino de leer el token
         else:
             lexema += char   #! creamos nuestros Token
