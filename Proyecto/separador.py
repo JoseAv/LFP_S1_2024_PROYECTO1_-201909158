@@ -1,6 +1,6 @@
-from analizador import lista_lexemas  # Importa lista_lexemas desde el módulo analizador
+from analizador import lista_lexemas  
 
-# Define las listas Inicio y Cuerpo
+#s listas Inicio y Cuerpo
 Inicio = []
 Cuerpo = []
 valueInicio = []
@@ -278,6 +278,7 @@ def Separador():
 
 
     CreateHtml(cuerpoObjeto,inicioObjeto)
+    
 
     
 

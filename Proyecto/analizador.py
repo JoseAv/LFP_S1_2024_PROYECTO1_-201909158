@@ -63,7 +63,7 @@ def instruccion_inicio(cadena):
             cadena = cadena[1:]
             puntero = 0
         else:
-            lista_errores.append(cadena)
+            lista_errores.append(char)
             cadena = cadena[1:]
             puntero = 0
             n_columna +=1

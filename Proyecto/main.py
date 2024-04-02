@@ -1,8 +1,9 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox
 from tkinter.scrolledtext import ScrolledText
-from analizador import instruccion_inicio,lista_lexemas  
+from analizador import instruccion_inicio,lista_lexemas
 from separador import Separador
+from tabla import Tokens,Errores
 
 
 class TextEditorApp:
@@ -83,6 +84,8 @@ class TextEditorApp:
 
         instruccion_inicio(text)
         Separador()
+        Tokens()
+        Errores()
         
 
         
